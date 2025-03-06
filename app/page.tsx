@@ -115,41 +115,33 @@ export default function Home() {
     }
 
     if (!isGenerating) {
+      setIsGenerating(true);
+      setConfidence(0);
+      
       try {
-        setIsGenerating(true);
-        setConfidence(0);
+        const result = await generatePrompt(activeCategory, userInput);
+        const optimizedPrompt = ensurePlatformOptimization(result, activeCategory, selectedPlatform);
+        setGeneratedPrompt(optimizedPrompt);
         
-        try {
-          // Pass only the required arguments to the generatePrompt function
-          const result = await generatePrompt(activeCategory, userInput);
-          
-          // Make sure the prompt is optimized for the selected platform
-          const optimizedPrompt = ensurePlatformOptimization(result, activeCategory, selectedPlatform);
-          setGeneratedPrompt(optimizedPrompt);
-          
-          // Add to history
-          setPromptHistory(prev => [optimizedPrompt, ...prev.slice(0, 9)]);
-          
-          toast.success("Prompt ready to use!", {
-            description: "Optimized for " + selectedPlatform
-          });
-        } catch (apiError) {
-          console.error("API Error:", apiError);
-          
-          // Fallback with the same parameters
-          const fallbackPrompt = generateOptimizedPrompt(activeCategory, userInput, selectedPlatform);
-          setGeneratedPrompt(fallbackPrompt);
-          
-          // Add to history
-          setPromptHistory(prev => [fallbackPrompt, ...prev.slice(0, 9)]);
-          
-          toast.success("Prompt created successfully", {
-            description: "Optimized for " + selectedPlatform
-          });
-        }
+        // Add to history
+        setPromptHistory(prev => [optimizedPrompt, ...prev.slice(0, 9)]);
+        
+        toast.success("Prompt ready to use!", {
+          description: "Optimized for " + selectedPlatform
+        });
       } catch (error) {
-        console.error("Error:", error);
-        toast.error("Something went wrong. Please try again.");
+        console.error("Error generating prompt:", error);
+        
+        // Use fallback prompt generation
+        const fallbackPrompt = generateOptimizedPrompt(activeCategory, userInput, selectedPlatform);
+        setGeneratedPrompt(fallbackPrompt);
+        
+        // Add to history
+        setPromptHistory(prev => [fallbackPrompt, ...prev.slice(0, 9)]);
+        
+        toast.success("Prompt created using fallback method", {
+          description: "Optimized for " + selectedPlatform
+        });
       } finally {
         setIsGenerating(false);
       }
