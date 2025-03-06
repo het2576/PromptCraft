@@ -1,4 +1,4 @@
-# PromptCraft
+# PromptCraft (https://prompt-craft-psi.vercel.app/)
 
 <!-- No license specified, so no license badge included -->
 
