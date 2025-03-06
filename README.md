@@ -12,7 +12,6 @@ PromptCraft is an **AI-powered Prompt Generator** that helps you create optimize
 *   [Tech Stack](#tech-stack)
 *   [Installation](#installation)
 *   [Usage](#usage)
-*   [License](#license)
 *   [Contributing](#contributing)
 
 ## Features
@@ -31,7 +30,14 @@ PromptCraft is an **AI-powered Prompt Generator** that helps you create optimize
 
 ## Installation
 
-Installation instructions not currently specified. Please check back later.
+To get started, follow these steps:
+```bash
+
+git clone <repository_url>
+cd <repository_directory>
+npm install
+```
+
 
 ## Usage
 
