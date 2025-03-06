@@ -85,7 +85,7 @@ const Navbar = () => {
               className="rounded-full bg-white/40 dark:bg-gray-800/30 backdrop-blur-lg border border-purple-200/20 dark:border-purple-800/20 hover:bg-purple-100/30 dark:hover:bg-purple-900/30 shadow-sm"
               asChild
             >
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://github.com/het2576/PromptCraft" target="_blank" rel="noopener noreferrer">
                 <Github className="h-[1.2rem] w-[1.2rem] text-gray-700 dark:text-gray-300" />
                 <span className="sr-only">GitHub</span>
               </Link>
