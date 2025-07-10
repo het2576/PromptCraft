@@ -71,4 +71,3 @@ To contribute:
 3.  Make your changes.
 4.  Submit a pull request.
 
-We appreciate your contributions!
